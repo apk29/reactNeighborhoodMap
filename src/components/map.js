@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
-  </GoogleMap>
-))
+// import data from './data'
+import "./Map.css";
 
 class Map extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <MyMapComponent
-  isMarkerShown
-  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC3PZW2qXINT41p61GSb4egZo1hERFSBLY"
-  loadingElement={<div style={{ height: `100%` }} />}
-  containerElement={<div style={{ height: `400px` }} />}
-  mapElement={<div style={{ height: `100%` }} />}
-/>
-         );
-    }
+
+  componentDidMount() {
+    this.renderMap();
+  }
+
+  renderMap = () => {
+    this.loadScript("https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAPSXmNZXCu_tHV-TYQNtwWH4t6jODM_PU&callback=initMap");
+    window.initMap = this.initMap
+  }
+
+  loadScript = (url) => {
+    let index = window.document.getElementsByTagName("script")[0];
+    let script = window.document.createElement("script");
+    script.src = url;
+    script.async = true;
+    script.defer = true;
+    index.parentNode.insertBefore(script, index);
+  }
+  
+  initMap = () => {
+    let map = new window.google.maps.Map(document.getElementById("map"), {
+      center: {lat: 37.813331, lng: -122.261801},
+      zoom: 8
+    })
+  }
+
+  render() { 
+    return (
+      <main>
+      <div id="map"></div>
+      </main>
+      )
+  };
+
 }
- 
-export default Map;
+
+ export default Map;
