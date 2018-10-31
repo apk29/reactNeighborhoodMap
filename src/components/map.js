@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 // import data from './data'
 import "./Map.css";
 import axios from 'axios';
+// import { findLocalNegativePatterns }
+//  from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.1/node_modules/fast-glob/out/managers/tasks';
+import data from './Data'
 
 class Map extends Component {
-state = {
-  places: []
+
+// constructor(props) {  
+  // super(props)
+  state = {
+    places: [],
+    markers: [],
+    showVenues: [],
+    query: '',
+    hiddenMarkers: []
+
 }
+
   componentDidMount() {
-    // this.renderMap();
     this.getData();
   }
 
@@ -49,7 +60,7 @@ state = {
     index.parentNode.insertBefore(script, index);
   }
   
-  
+
   initMap = () => {
     //Create map
     let map = new window.google.maps.Map(document.getElementById("map"), {
@@ -62,22 +73,42 @@ state = {
       let infowindow = new window.google.maps.InfoWindow();
      
       //this displays a dynamic marker
-    this.state.places.map(place => {
+      this.state.places.map(place => {
 
       let contentString = `${place.venue.name}`
    
       //Creat a marker
-    let marker = new window.google.maps.Marker({
-      position: {lat: place.venue.location.lat, lng: place.venue.location.lng},
-      map: map,
-      title: place.venue.name
+      let marker = new window.google.maps.Marker({
+        position: {lat: place.venue.location.lat, lng: place.venue.location.lng},
+        map: map,
+        animation: window.google.maps.Animation.DROP,
+        title: place.venue.title,
+        description: place.venue.description
           
     });
-    //Open infoWindow by click
-    marker.addListener('click', function() {
+
+      this.state.markers.push(marker);
+      
+      function animationEffect() {
+        marker.setAnimation(window.google.maps.Animation.BOUNCE)
+        setTimeout(function(){ marker.setAnimation(null) }, 550)
+      }
+
+      function openMarker() {
+        // Setting the content of the InfoWindow
+        infowindow.setContent(contentString)
+        animationEffect()
+        
+      // Open an InfoWindow upon clicking on its marker
+        infowindow.open(map, marker)
+      }
+
+      //Open infoWindow by click
+      marker.addListener('click', function() {
       
       //Change content
       infowindow.setContent(contentString);
+
       //Open infoWindow
       infowindow.open(map, marker);
 

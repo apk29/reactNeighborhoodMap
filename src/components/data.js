@@ -1,51 +1,51 @@
 
 /* List view showing location names */
 export const data = [{
-    name: 'Wholefoods',
+    name: 'Cholita Linda',
     location: {
-        lat: 37.812570,
-        lng: -122.260909
+        lat: 37.83617413695148,
+        lng: -122.26278223600943
     }, 
     
 }, {
-    name: 'The Lake Chalet Seafood Bar & Grill',
+    name: 'Stay Gold Delicatessen',
     location: {
-        lat: 37.802232,
-        lng: -122.261591
+        lat: 37.817698599378375,
+        lng: -122.27585630660695
     }, 
    
 }, {
-    name: 'Chinatown',
+    name: 'Arizmendi Bakery',
     location: {
-        lat: 37.798560,
-        lng: -122.269270
+        lat: 37.81066647714583,
+        lng: -122.24481041159486
     }, 
    
 }, {
-    name: 'Fox Theater',
+    name: 'Tacos Mi Rancho',
     location: {
-        lat: 37.808117,
-        lng: -122.269768
+        lat: 37.79888908973301,
+        lng: -122.25670100723919
     }, 
    
 }, {
-    name: 'Frank H. Ogawa Plaza',
+    name: "Beauty's Bagel Shop",
     location: {
-        lat: 37.8053,
-        lng: -122.2723
+        lat: 37.82783115240899,
+        lng: -122.26472891128223
     }, 
    
-    name: 'Jack London Square',
+    name: "Zachary's Chicago Pizza",
     location: {
-        lat: 37.7947,
-        lng: -122.2772
+        lat: 37.8462752693253,
+        lng: -122.25204128552018
     }, 
    
 },{
-    name: 'Great Western Power Company',
+    name: "Abura-Ya",
     location: {
-        lat: 37.809787,
-        lng: -122.2701297
+        lat: 37.80595917918534,
+        lng: -122.26769328117369
     }, 
    
    }, 
