@@ -4,7 +4,6 @@ import "./Map.css";
 import axios from 'axios';
 // import { findLocalNegativePatterns }
 //  from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.1/node_modules/fast-glob/out/managers/tasks';
-import data from './Data'
 
 class Map extends Component {
 
@@ -65,17 +64,18 @@ class Map extends Component {
     //Create map
     let map = new window.google.maps.Map(document.getElementById("map"), {
       center: {lat: 37.813331, lng: -122.261801},
-      zoom: 12
+      zoom: 13
     })
        
       //Create an infoWindow, this outside of function below to keep only 
       //one infoWindow Open
       let infowindow = new window.google.maps.InfoWindow();
      
-      //this displays a dynamic marker
+      //this displays a dynamic marker & information in marker
       this.state.places.map(place => {
-
-      let contentString = `${place.venue.name}`
+      let contentString = `${place.venue.name},
+                           ${place.venue.location.address},
+                           ${place.venue.location.city}`
    
       //Creat a marker
       let marker = new window.google.maps.Marker({
@@ -83,15 +83,14 @@ class Map extends Component {
         map: map,
         animation: window.google.maps.Animation.DROP,
         title: place.venue.title,
-        description: place.venue.description
-          
+                  
     });
 
       this.state.markers.push(marker);
       
       function animationEffect() {
         marker.setAnimation(window.google.maps.Animation.BOUNCE)
-        setTimeout(function(){ marker.setAnimation(null) }, 550)
+        setTimeout(function(){ marker.setAnimation(null) }, 1400)
       }
 
       function openMarker() {
@@ -103,14 +102,12 @@ class Map extends Component {
         infowindow.open(map, marker)
       }
 
-      //Open infoWindow by click
+         //Open infoWindow by click
       marker.addListener('click', function() {
-      
-      //Change content
-      infowindow.setContent(contentString);
+        openMarker();
 
-      //Open infoWindow
-      infowindow.open(map, marker);
+         //Open infoWindow
+        infowindow.open(map, marker);
 
     });
   })

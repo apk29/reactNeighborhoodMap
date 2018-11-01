@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  }
+
+.sideBar {
+  width: 25%;
 }
 
 .App-logo {
@@ -9,7 +17,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,10 +42,16 @@
        * element that contains the map. */
        #map {
         height: 100%;
-      }
+        width: 75%;
+        }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+
+      }
+
+      .filterList {
+        position: relative;
       }
