@@ -4,11 +4,12 @@
   width: 100vw;
   display: flex;
   flex-flow: row nowrap;
-  }
-
-.sideBar {
-  width: 25%;
 }
+.sideBar {
+  width: 50%;
+}
+  
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -42,7 +43,7 @@
        * element that contains the map. */
        #map {
         height: 100%;
-        width: 75%;
+        width: 100%;
         }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -52,6 +53,4 @@
 
       }
 
-      .filterList {
-        position: relative;
-      }
+      

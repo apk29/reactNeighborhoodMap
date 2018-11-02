@@ -4,9 +4,10 @@ class List extends Component {
     state = {  }
     render() { 
         return ( 
-        <li className="list">
-        Hello World!
-        </li>)
+        <ul className="list"> 
+        <li >Hello World!</li>
+        </ul>
+        )
     }
 }
  

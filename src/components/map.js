@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import data from './data'
+import escapeRegExp from 'escape-string-regexp';
 import "./Map.css";
 import axios from 'axios';
 // import { findLocalNegativePatterns }
@@ -82,7 +82,7 @@ class Map extends Component {
         position: {lat: place.venue.location.lat, lng: place.venue.location.lng},
         map: map,
         animation: window.google.maps.Animation.DROP,
-        title: place.venue.title,
+        title: place.venue.name
                   
     });
 
@@ -98,26 +98,44 @@ class Map extends Component {
         infowindow.setContent(contentString)
         animationEffect()
         
-      // Open an InfoWindow upon clicking on its marker
+      //Open infoWindow
         infowindow.open(map, marker)
       }
 
          //Open infoWindow by click
       marker.addListener('click', function() {
         openMarker();
-
-         //Open infoWindow
-        infowindow.open(map, marker);
-
-    });
+  });
   })
   }
 
+  updateQuery = query => {
+    this.setState( { query } )
+    this.state.markers.map(marker => marker.setVisible(true))
+    let filterVenues
+    let hiddenMarkers
+
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), "i")
+      filterVenues = this.state.places.filter(place =>
+        match.test(place.venue.name))
+        this.setState({ places: filterVenues })
+        hiddenMarkers = this.state.markers.filter(marker =>
+        filterVenues.every(place => place.venue.name !== marker.title))
+
+        hiddenMarkers.forEach(marker => marker.setVisible(false))
+        this.setState({ hiddenMarkers })
+    } else {
+      this.setState( {places: this.state.showVenues} )
+      this.state.markers.forEach(marker => marker.setVisible(true))
+    }
+    }
+  
   render() { 
     return (
-      <main>
+      
       <div id="map"></div>
-      </main>
+     
       )
   };
 

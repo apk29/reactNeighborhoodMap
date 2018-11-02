@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map'
-import FilterList from './components/Filter'
 import SideBar from './components/SideBar';
-// import data from './components/data'
+import { timingSafeEqual } from 'crypto';
+
 
 class App extends Component {
     
   render() {
     return (
-      <div className="App" >
-      <div>
-        <h1 className="App-header">Oakland Restaurants</h1>
-      </div>
-      
-        <Map /><SideBar />
-      </div>
+      <main>
+        <div className="App-header">Oakland Restaurants</div>
+          <div className="App" >
+            <SideBar />
+            <Map />
+          </div> 
+      </main>       
     );
   }
 }
