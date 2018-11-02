@@ -9,9 +9,9 @@ class SideBar extends Component {
             <div className="sideBar">
             <FilterList />
             <List 
-            query={this.state.query}
-            markers={ this.state.markers }
-            venues={ this.state.showVenues }
+            query={query}
+            markers={ markers }
+            places={ showVenues }
             />
 
             </div>
