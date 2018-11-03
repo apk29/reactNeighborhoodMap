@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './List';
 
 class List extends Component {
 
@@ -11,16 +12,20 @@ class List extends Component {
         })
       }
 
+
     render() { 
         return ( 
             <div className="list">
-            {/* {this.props.places.map((place) => 
-                <li key={place.venue.id}>{place.venue.name}
-                </li>)} */}
-              {this.props.places.map((place) => 
-                <li key={place.venue.id}>{place.venue.name}
+            <ul>
+              {this.props.places.map(place => 
+                <li key={place.venue.id}
+                    onClick={() => {
+                    this.openMarker(place.venue.name);
+                  }}
+                  
+                >{ place.venue.name }
                 </li>)}
-        
+                </ul>
         
         </div>
         )

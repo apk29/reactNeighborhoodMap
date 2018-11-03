@@ -4,12 +4,36 @@
   width: 100vw;
   display: flex;
   flex-flow: row nowrap;
+  
 }
 .sideBar {
   width: 50%;
-}
   
-.list {list-style-type: none}
+}
+.FilterList {
+  width: 100%;
+  
+}
+
+/* center filter placeholder text */
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
+}
+/* center filter placeholder text */
+
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
