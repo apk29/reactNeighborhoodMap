@@ -14,14 +14,12 @@ class List extends Component {
     render() { 
         return ( 
             <div className="list">
-        {this.props.places.map(place =>
-           <li role="menuitem"
-           onClick={() => {
-             this.openMarker(place.venue.name);
-           }}
-          
-         ></li>
-            )}
+            {/* {this.props.places.map((place) => 
+                <li key={place.venue.id}>{place.venue.name}
+                </li>)} */}
+              {this.props.places.map((place) => 
+                <li key={place.venue.id}>{place.venue.name}
+                </li>)}
         
         
         </div>

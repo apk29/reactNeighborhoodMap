@@ -4,6 +4,8 @@ import escapeRegExp from 'escape-string-regexp';
 import SideBar from './components/SideBar';
 import { timingSafeEqual } from 'crypto';
 import axios from 'axios';
+import List from './components/List'
+import FilterList from './components/Filter';
 // import { findLocalNegativePatterns }
 //  from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.1/node_modules/fast-glob/out/managers/tasks';
 
@@ -146,10 +148,12 @@ constructor(props) {
         <div className="App-header">Oakland Restaurants</div>
           <div className="App" >
           <div id="map"></div>
-            <SideBar
-            places= { places }
-            markers = { markers } />
-            
+            <div className="sideBar">
+            <FilterList />
+            <List
+            places= { this.state.places }
+            markers = { this.state.markers } />
+            </div>
           </div> 
       </main> 
      
