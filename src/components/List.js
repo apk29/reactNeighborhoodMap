@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './List';
 
 class List extends Component {
-
+  
     openMarker = locationName => {
         // eslint-disable-next-line
         this.props.markers.map(marker => {
@@ -12,13 +12,14 @@ class List extends Component {
         })
       }
 
-
     render() { 
         return ( 
             <div className="list">
             <ul>
               {this.props.places.map(place => 
-                <li key={place.venue.id}
+                <li style={{ listStyleType: "none",
+                    textAlign: 'center' }}
+                    key={place.venue.id}
                     onClick={() => {
                     this.openMarker(place.venue.name);
                   }}
@@ -26,8 +27,7 @@ class List extends Component {
                 >{ place.venue.name }
                 </li>)}
                 </ul>
-        
-        </div>
+             </div>
         )
     }
 }

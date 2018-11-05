@@ -131,13 +131,24 @@ class App extends Component {
 			this.state.markers.forEach(marker => marker.setVisible(true))
 		}
 	}
-  
+// clear filter function 
+clearFilter = () => {
+    // if the input is empty we don't want the map to rerender if we click the button
+    // if (this.state.query === '')
+    //   return
+     
+    this.setState({
+      query: '',
+    
+    })
+  }
   render() { 
     const { places } = this.state;
     const { markers } = this.state;
     const { showVenues } = this.state;
     const { query } = this.state;
-    const { clickLocation } = this;
+	const { clickLocation } = this;
+	
     
     return (
       
@@ -152,7 +163,8 @@ class App extends Component {
             markers={ markers } 
   	      	query={ query }     	
             updateQuery= {b => this.updateQuery(b)}
-            clickLocation = { clickLocation }
+			clickLocation = { clickLocation }
+			clearFilter = { this.clearFilter }
             />
          </div>
          <div className="List">

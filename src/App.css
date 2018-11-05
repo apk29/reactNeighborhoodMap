@@ -7,9 +7,10 @@
   
 }
 .sideBar {
-  width: 50%;
-  
+  width: 50%; 
+  .list {list-style-type: none}
 }
+
 .FilterList {
   width: 100%;
   
