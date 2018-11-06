@@ -4,6 +4,7 @@ import escapeRegExp from 'escape-string-regexp';
 import axios from 'axios';
 import List from './components/List'
 import FilterList from './components/Filter';
+import Error from './components/Error'
 // import { findLocalNegativePatterns }
 //  from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.1/node_modules/fast-glob/out/managers/tasks';
 class App extends Component {
@@ -33,7 +34,8 @@ class App extends Component {
 			client_secret: client_secret,
 			query: "food",
 			near: "Oakland",
-			v: "20181030"
+			v: "20181030",
+			limit: 28
 		}
 		axios.get(fourSquareUrl + new URLSearchParams(parameters))
 			.then(response => {
@@ -54,6 +56,9 @@ class App extends Component {
 		script.async = true;
 		script.defer = true;
 		index.parentNode.insertBefore(script, index);
+		script.error = () => {
+			alert("Error occured, check URL")
+		}
 	}
 	initMap = () => {
 		//Create map
@@ -69,9 +74,9 @@ class App extends Component {
 		let infowindow = new window.google.maps.InfoWindow();
 		//this displays a dynamic marker & information in marker
 		this.state.places.map(place => {
-			let contentString = `${place.venue.name},
-                           ${place.venue.location.address},
-                           ${place.venue.location.city}`
+			let contentString = `${place.venue.name},<br>
+                           ${place.venue.location.address},<br>
+							${place.venue.location.city}`
 			//Creat a marker
 			let marker = new window.google.maps.Marker({
 				position: {
@@ -133,52 +138,55 @@ class App extends Component {
 	}
 // clear filter function 
 clearFilter = () => {
-    // if the input is empty we don't want the map to rerender if we click the button
-    // if (this.state.query === '')
-    //   return
-     
+      
     this.setState({
       query: '',
     
     })
   }
   render() { 
+	if(this.state.hasError) {
+		return <div aria-label="Error message">Error!</div>
+	} else {
     const { places } = this.state;
     const { markers } = this.state;
     const { showVenues } = this.state;
     const { query } = this.state;
 	const { clickLocation } = this;
 	
-    
-    return (
-      
-      <main>
-   <div className="App-header">Oakland Restaurants</div>
-   <div className="App" >
-      <div id="map"></div>
-      <div className="sideBar">
-         <div className="FilterList">
-            <FilterList
-            venues={ showVenues } 
-            markers={ markers } 
-  	      	query={ query }     	
-            updateQuery= {b => this.updateQuery(b)}
-			clickLocation = { clickLocation }
-			clearFilter = { this.clearFilter }
-            />
-         </div>
-         <div className="List">
-            <List
-               places= { places }
-               markers = { markers } />
-         </div>
-      </div>
-   </div>
-</main>
-     
-      )
-  };
-
-}
+	
+	return (
+		<main>
+		   <Error>
+			  <div className="App-header" aria-label="Header">
+			  	Oakland Restaurants
+			  </div>
+			  <div className="App" >
+				 <div id="map" aria-label="Map"></div>
+				 <div className="sideBar">
+					<div className="FilterList">
+					   <FilterList aria-label="Search Bar"
+					   //passes the items to the FilterList Component
+					   venues={ showVenues } 
+					   markers={ markers } 
+					   query={ query }     	
+					   updateQuery= {b => this.updateQuery(b)}
+					   clickLocation = { clickLocation }
+					   clearFilter = { this.clearFilter }
+					   />
+					</div>
+					<div className="List" aria-label="Menu Container">
+					   <List //passes the items to the List Component
+						  places= { places }
+						  markers = { markers } />
+					</div>
+				 </div>
+			  </div>
+		   </Error>
+		</main>
+		);
+		}
+		};
+		}
 
  export default App;

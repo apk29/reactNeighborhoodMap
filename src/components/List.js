@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './List';
+import fourSquare from '../img/fourSquare.png'
 
 class List extends Component {
   
@@ -27,6 +28,13 @@ class List extends Component {
                 >{ place.venue.name }
                 </li>)}
                 </ul>
+                <div className="fourSquareImg">
+              <img style={{width: 125, height: 100 }}
+                src={fourSquare}
+                alt="Powered by Foursquare"
+                title='Powered by Foursquare'
+              />
+            </div>
              </div>
         )
     }

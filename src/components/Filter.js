@@ -7,15 +7,18 @@ render = () => {
     return (
         <form className="filterList">
             <input type="button" 
-            style={{ width: "100%",  //sets witdth of filter box
-            fontSize: "1.2em" }}  //sets fontsize of filter box
+            style={{ width: "80%",  //sets witdth of filter box
+            fontSize: "1.2em",
+            marginTop: "2%"
+        }}  //sets fontsize of filter box
             type="search" 
-            placeholder="Filter"
+            placeholder="Search for Restaurants"
             value={this.props.query}
             onChange={event => this.props.updateQuery(event.target.value)}
             autoFocus={true}
             />
-            <button className="btn btn-second btn-sm"
+            <button className="btn btn-second btn-sm" 
+                style= {{ marginTop: "5%" }}
                 onClick= { () => this.props.clearFilter() }  >Reset Filter
              </button>
         </form>
