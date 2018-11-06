@@ -14,7 +14,7 @@ render = () => {
         <form className="filterList">
             <input type="button" 
                 style = { this.styles }  //sets fontsize of filter box
-                placeholder="Search for Restaurants"
+                placeholder="Type restaurant name here"
                 type="text"
                 value={this.props.query}
                 onChange={event => this.props.updateQuery(event.target.value)}
