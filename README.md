@@ -2,6 +2,7 @@
 
 This API looks at the Foursquare database of restaurants and uses the Google map API to show the locations, with markers, of the resturants on google maps. It list the resturants in the city of Oakland. The restaurants are listed on the side with a search filter to narrow down the search criteria.
 
+To view [live version](https://apk29.github.io/reactNeighborhoodMap/)
 # Installation
 To run this API, download the file at the [github repository](https://github.com/apk29/reactNeighborhoodMap). 
 
