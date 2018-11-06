@@ -8,8 +8,7 @@
 }
 .sideBar {
   width: 50%; 
-  .list {list-style-type: none}
-}
+ }
 
 .FilterList {
   width: 100%;
@@ -42,6 +41,7 @@
 }
 
 .App-header {
+  display: flex;
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
@@ -64,11 +64,19 @@
     transform: rotate(360deg);
   }
 }
+
   /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 100%;
+        display: flex;
+        position: sticky;
+        height: 100vh;
         width: 100%;
+        }
+        @media only screen and (max-width: 400px) {
+          #map {
+            display: none;
+          }
         }
       /* Optional: Makes the sample page fill the window. */
       html, body {

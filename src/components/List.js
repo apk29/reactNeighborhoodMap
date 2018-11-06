@@ -29,7 +29,9 @@ class List extends Component {
                 </li>)}
                 </ul>
                 <div className="fourSquareImg">
-              <img style={{width: 125, height: 100 }}
+              <img style={{width: 135, height: 90,
+                flex: 1
+                }}
                 src={fourSquare}
                 alt="Powered by Foursquare"
                 title='Powered by Foursquare'

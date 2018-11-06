@@ -5,8 +5,7 @@ import axios from 'axios';
 import List from './components/List'
 import FilterList from './components/Filter';
 import Error from './components/Error'
-// import { findLocalNegativePatterns }
-//  from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.1/node_modules/fast-glob/out/managers/tasks';
+
 class App extends Component {
 	constructor(props) {
 		super(props)
@@ -40,9 +39,9 @@ class App extends Component {
 		axios.get(fourSquareUrl + new URLSearchParams(parameters))
 			.then(response => {
 				this.setState({
-          places: response.data.response.groups[0].items,
-          // makes list re-appear when filter is erased
-          showVenues: response.data.response.groups[0].items
+          	places: response.data.response.groups[0].items,
+          	// makes list re-appear when filter is erased
+          	showVenues: response.data.response.groups[0].items
 				}, this.renderMap())
 			})
 			.catch(error => {
@@ -75,8 +74,8 @@ class App extends Component {
 		//this displays a dynamic marker & information in marker
 		this.state.places.map(place => {
 			let contentString = `${place.venue.name},<br>
-                           ${place.venue.location.address},<br>
-							${place.venue.location.city}`
+                                 ${place.venue.location.address},<br>
+							     ${place.venue.location.city}`
 			//Creat a marker
 			let marker = new window.google.maps.Marker({
 				position: {
@@ -162,7 +161,8 @@ clearFilter = () => {
 			  	Oakland Restaurants
 			  </div>
 			  <div className="App" >
-				 <div id="map" aria-label="Map"></div>
+				 <div id="map" aria-label="Map" 
+				 ></div>
 				 <div className="sideBar">
 					<div className="FilterList">
 					   <FilterList aria-label="Search Bar"
