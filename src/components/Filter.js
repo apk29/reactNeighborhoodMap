@@ -15,9 +15,10 @@ render = () => {
             <input type="button" 
                 style = { this.styles }  //sets fontsize of filter box
                 placeholder="Search for Restaurants"
+                type="text"
                 value={this.props.query}
                 onChange={event => this.props.updateQuery(event.target.value)}
-                autoFocus={true} />
+                />
             <button className="btn btn-second btn-sm" 
                 style= {{ marginTop: "5%" }}
                 onClick= { () => this.props.clearFilter() }  >Reset Filter

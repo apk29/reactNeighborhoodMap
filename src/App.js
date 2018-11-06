@@ -64,20 +64,21 @@ class App extends Component {
 		let map = new window.google.maps.Map(document.getElementById("map"), {
 			center: {
 				lat: 37.813331,
-				lng: -122.261801
-			},
-			zoom: 13
-		})
+				lng: -122.261801},
+				zoom: 13
+			})
+			
+		
 		//Create an infoWindow, this outside of function below to keep only 
 		//one infoWindow Open
 		let infowindow = new window.google.maps.InfoWindow();
 		//this displays a dynamic marker & information in marker
-		this.state.places.map(place => {
-			let contentString = `${place.venue.name},<br>
+		this.state.places.forEach((place) => {
+			const contentString = `${place.venue.name},<br>
                                  ${place.venue.location.address},<br>
 							     ${place.venue.location.city}`
 			//Creat a marker
-			let marker = new window.google.maps.Marker({
+			const marker = new window.google.maps.Marker({
 				position: {
 					lat: place.venue.location.lat,
 					lng: place.venue.location.lng
@@ -86,7 +87,7 @@ class App extends Component {
 				animation: window.google.maps.Animation.DROP,
 				title: place.venue.name
 			});
-			this.state.markers.push(marker);
+			this.state.markers.push(marker)
 
 			function animationEffect() {
 				marker.setAnimation(window.google.maps.Animation.BOUNCE)
@@ -147,12 +148,10 @@ clearFilter = () => {
 	if(this.state.hasError) {
 		return <div aria-label="Error message">Error!</div>
 	} else {
-    const { places } = this.state;
-    const { markers } = this.state;
-    const { showVenues } = this.state;
-    const { query } = this.state;
+    
 	const { clickLocation } = this;
-	
+	const { places, markers, showVenues, query } 
+	        = this.state
 	
 	return (
 		<main>
