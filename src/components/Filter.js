@@ -12,7 +12,7 @@ render = () => {
     
     return (
         <form className="filterList">
-            <input type="button" 
+            <input 
                 style = { this.styles }  //sets fontsize of filter box
                 placeholder="Type restaurant name here"
                 type="text"
